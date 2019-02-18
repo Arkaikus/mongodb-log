@@ -27,7 +27,8 @@ class TestAuth(unittest.TestCase):
         self.db.command(
             'createUser',
             self.user_name,
-            pwd=self.password
+            pwd=self.password,
+            roles=["readWrite"]
         )
 
     def tearDown(self):
