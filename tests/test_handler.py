@@ -76,6 +76,7 @@ class TestRootLoggerHandler(unittest.TestCase):
             "Expected query to return 1 "
             "message; it returned %d" % docs_count
         )
+        cursor = self.collection.find(query)
         self.assertEqual(cursor[0]['msg']['address'], '340 N 12th St')
 
         query = {
