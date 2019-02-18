@@ -67,8 +67,8 @@ class TestRootLoggerHandler(unittest.TestCase):
 
         query = {
             'levelname': 'INFO',
-            'msg.address': '340 N 12th St'},
-        )
+            'msg.address': '340 N 12th St',
+        }
         docs_count = self.collection.count_documents(query)
         self.assertEqual(
             docs_count,
