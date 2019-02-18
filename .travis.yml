@@ -8,7 +8,7 @@ matrix:
     - python: 3.7
       dist: xenial
       sudo: true
-    - "pypy"
+    - pypy
 services: mongodb
 install:
   - "pip install -r requirements.txt"
