@@ -20,6 +20,7 @@ setup(
     packages=['mongolog'],
     keywords=["mongolog", "logging", "mongo", "mongodb"],
     install_requires=['pymongo'],
+    python_requires=">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*",
     classifiers=[
         "Intended Audience :: Developers",
         "Operating System :: OS Independent",
