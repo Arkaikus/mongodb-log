@@ -65,19 +65,26 @@ class TestRootLoggerHandler(unittest.TestCase):
         log.info({'address': '340 S 12th St', 'state': 'PA', 'country': 'US'})
         log.info({'address': '1234 Market St', 'state': 'PA', 'country': 'US'})
 
-        cursor = self.collection.find({'levelname': 'INFO',
-            'msg.address': '340 N 12th St'})
+        query = {
+            'levelname': 'INFO',
+            'msg.address': '340 N 12th St'},
+        )
+        docs_count = self.collection.count_documents(query)
         self.assertEqual(
-            cursor.count_documents(),
+            docs_count,
             1,
             "Expected query to return 1 "
-            "message; it returned %d" % cursor.count_documents()
+            "message; it returned %d" % docs_count()
         )
         self.assertEqual(cursor[0]['msg']['address'], '340 N 12th St')
 
-        cursor = self.collection.find({'levelname': 'INFO',
-            'msg.state': 'PA'})
-
+        query = {
+            'levelname': 'INFO',
+            'msg.state': 'PA',
+        }
+        docs_count = self.collection.count_documents(query)
         self.assertEqual(
-            cursor.count_documents(), 3, "Didn't find all three documents"
+            docs_count,
+            3,
+            "Didn't find all three documents"
         )
