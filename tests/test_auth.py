@@ -24,7 +24,7 @@ class TestAuth(unittest.TestCase):
         self.collection = self.db[self.collection_name]
 
         self.conn.drop_database(self.db_name)
-        self.db.add_user(self.user_name, self.password)
+        self.db.createUser(self.user_name, self.password)
 
     def tearDown(self):
         """ Drop used database """
