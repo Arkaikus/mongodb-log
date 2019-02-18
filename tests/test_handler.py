@@ -74,7 +74,7 @@ class TestRootLoggerHandler(unittest.TestCase):
             docs_count,
             1,
             "Expected query to return 1 "
-            "message; it returned %d" % docs_count()
+            "message; it returned %d" % docs_count
         )
         self.assertEqual(cursor[0]['msg']['address'], '340 N 12th St')
 
