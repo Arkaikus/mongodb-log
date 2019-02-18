@@ -26,5 +26,6 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Topic :: System :: Logging",
-        "Topic :: Database"],
+        "Topic :: Database",
+    ]
 )
