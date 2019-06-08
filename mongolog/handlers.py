@@ -70,7 +70,7 @@ class MongoHandler(logging.Handler):
     def emit(self, record):
         """ Store the record to the collection. Async insert """
         try:
-            self.collection.insert(self.format(record))
+            self.collection.insert_one(self.format(record))
         except InvalidDocument as e:
             logging.error("Unable to save log record: %s", e.message,
                 exc_info=True)
