@@ -3,3 +3,4 @@
 *.nja
 .eggs/*
 mongolog.egg-info/*
+dist/*
