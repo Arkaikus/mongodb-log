@@ -65,10 +65,10 @@ class MongoHandler(logging.Handler):
         connection = MongoClient(host, port, **auth_kwargs)
         database = connection.get_database(db)
 
-        if collection in database.list_collection_names():
-            self.collection = database[collection]
-        else:
+        try:
             self.collection = database.create_collection(collection, capped=True, size=10000000)
+        except:
+            self.collection = database[collection]
 
         self.formatter = MongoFormatter()
 
