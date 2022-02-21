@@ -44,20 +44,6 @@ class MongoHandler(logging.Handler):
     designed to be used with the standard python logging mechanism.
     """
 
-    @classmethod
-    def to(
-        cls,
-        collection,
-        db="mongolog",
-        host="localhost",
-        port=None,
-        username=None,
-        password=None,
-        level=logging.NOTSET,
-    ):
-        """Create a handler for a given"""
-        return cls(collection, db, host, port, username, password, level)
-
     def __init__(
         self,
         db: str,
