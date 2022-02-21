@@ -1,67 +1,28 @@
-MongoLog: Centralized logging made simple using MongoDB
+MongoLog: Simple python logging handler for MongoDB.
 =======================================================
-
-.. image:: https://travis-ci.org/puentesarrin/mongodb-log.png
-    :target: https://travis-ci.org/puentesarrin/mongodb-log
-    :alt: Travis CI status
-
-.. image:: https://pypip.in/v/mongolog/badge.png
-    :target: https://pypi.python.org/pypi/mongolog
-    :alt: Latest PyPI version
-
-.. image:: https://pypip.in/d/mongolog/badge.png
-    :target: https://pypi.python.org/pypi/mongolog
-    :alt: Number of PyPI downloads
 
 :Info: MongoDB python logging handler. Python centralized logging made easy.
 :Author: `Andrei Savu`_
-:Maintainer: `Jorge Puente Sarrín`_
+:Maintainer: `Arkaikus`_
 
 Setup
 -----
 
-Before using this handler for logging you will need to create a capped
-collection on the MongoDB server.
+Install the package with:
 
-You can do this using the following commands in the MongoDB shell::
-
-   > use mongolog
-   > db.createCollection('log', {capped:true, size:100000})
-
-... and you are ready. Running ``stats()`` function on ``log`` collection
-should show something like this::
-
-   > db.log.stats()
-   {
-           "ns" : "mongolog.log",
-           "count" : 0,
-           "size" : 0,
-           "storageSize" : 102400,
-           "numExtents" : 1,
-           "nindexes" : 1,
-           "lastExtentSize" : 102400,
-           "paddingFactor" : 1,
-           "systemFlags" : 1,
-           "userFlags" : 0,
-           "totalIndexSize" : 8176,
-           "indexSizes" : {
-                   "_id_" : 8176
-           },
-           "capped" : true,
-           "max" : 2147483647,
-           "ok" : 1
-   }
-
+    pip install -I git+https://github.com/Arkaikus/mongolog.git
 
 Usage
 -----
+
+MongoHandler will create a new database and collection if they do not exist.
 
 >>> import logging
 >>> from mongolog.handlers import MongoHandler
 >>>
 >>> log = logging.getLogger('demo')
 >>> log.setLevel(logging.DEBUG)
->>> log.addHandler(MongoHandler.to(db='mongolog', collection='log'))
+>>> log.addHandler(MongoHandler('mongolog','log', host='localhost', port=27017, username='user', password='pass'))
 >>>
 >>> log.debug('Some message')
 
@@ -105,6 +66,5 @@ Have fun!
 
 
 .. _Andrei Savu: https://github.com/andreisavu
-.. _Jorge Puente Sarrín: https://github.com/puentesarrin
+.. _Arkaikus: https://github.com/arkaikus
 .. _MongoDB website: http://www.mongodb.org
-.. _MongoDB blog: http://blog.mongodb.org/post/172254834/mongodb-is-fantastic-for-logging
