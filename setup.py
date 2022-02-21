@@ -9,7 +9,7 @@ long_description = open("README.rst").read()
 
 setup(
     name='mongolog',
-    version='0.1.2',
+    version='0.1.3',
     description='Centralized logging made simple using MongoDB',
     long_description=long_description,
     author='Andrei Savu',
