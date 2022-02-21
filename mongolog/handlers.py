@@ -58,12 +58,12 @@ class MongoHandler(logging.Handler):
         logging.Handler.__init__(self, level)
         assert isinstance(db, str), "[db] must be a string"
         assert isinstance(collection, str), "[collection] must be a string"
+        auth_kwargs = {}
+        if username is not None and password is not None:
+            auth_kwargs.update(username=username, password=password)
 
-        connection = MongoClient(host, port)
+        connection = MongoClient(host, port, **auth_kwargs)
         database = connection.get_database(db)
-
-        if username and password:
-            database.authenticate(username, password)
 
         if collection in database.list_collection_names():
             self.collection = database[collection]
