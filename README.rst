@@ -3,7 +3,7 @@ MongoLog: Simple python logging handler for MongoDB.
 
 :Info: MongoDB python logging handler. Python centralized logging made easy.
 :Author: `Andrei Savu`_
-:Maintainer: `Arkaikus`_
+:Fork Maintainer: `Arkaikus`_
 
 Setup
 -----
